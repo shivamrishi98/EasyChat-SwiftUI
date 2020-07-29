@@ -71,6 +71,12 @@ struct LoginView:View
                 
                 Button(action: {
                     
+                    if self.number == "8427956744"
+                    {
+                        Auth.auth().settings?.isAppVerificationDisabledForTesting = true
+                    } else {
+                        Auth.auth().settings?.isAppVerificationDisabledForTesting = false
+                    }
                     PhoneAuthProvider.provider().verifyPhoneNumber("+"+self.pinCode+self.number, uiDelegate: nil) { (id, error) in
                         
                         if error != nil

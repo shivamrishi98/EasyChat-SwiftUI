@@ -8,15 +8,17 @@
 
 import SwiftUI
 import Firebase
-
+import FirebaseFirestore
+import FirebaseStorage
 struct HomeView: View
 {
+    
     
     var body: some View
     {
         VStack
             {
-                Text("Home")
+                Text("Welcome \(UserDefaults.standard.value(forKey: "userName") as! String)")
                 
                 Button(action: {
                     
@@ -36,6 +38,8 @@ struct HomeView: View
         
         
     }
+    
+    
     
     
 }

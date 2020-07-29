@@ -19,6 +19,10 @@ struct OTPView:View
     
     @State private var alert = false
     
+    @State private var creation = false
+    @State private var loading = false
+    
+    
     var body : some View {
         
         
@@ -54,45 +58,75 @@ struct OTPView:View
                         .background(Color("Color"))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     
-                    
-                    
-                    
                     Spacer().frame(height:20)
                     
                     
-                    
-                    
-                    
-                    Button(action: {
-                        
-                        let credentials = PhoneAuthProvider.provider().credential(withVerificationID: self.id, verificationCode: self.otpCode)
-                        
-                        Auth.auth().signIn(with: credentials) { (data, error) in
-                            if error != nil
+                    if self.loading
+                    {
+                        HStack
                             {
+                                Spacer()
                                 
-                                self.errMsg = error!.localizedDescription
-                                self.alert.toggle()
-                                return
-                            }
-                            
-                            UserDefaults.standard.set(true, forKey: "status")
-                            
-                            NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
-                            
-                            
+                                Indicator()
+                                
+                                Spacer()
+                                
                         }
                         
-                    }) {
-                        Text("Verify OTP")
-                            .frame(width: UIScreen.main.bounds.width - 30, height: 50)
+                        
+                    } else {
+                        
+                        Button(action: {
+                            
+                            self.loading.toggle()
+                            
+                            let credentials = PhoneAuthProvider.provider().credential(withVerificationID: self.id, verificationCode: self.otpCode)
+                            
+                            Auth.auth().signIn(with: credentials) { (data, error) in
+                                if error != nil
+                                {
+                                    
+                                    self.errMsg = error!.localizedDescription
+                                    self.alert.toggle()
+                                    self.loading.toggle()
+                                    return
+                                }
+                                
+                                
+                                
+                                checkUser { (exists, user) in
+                                    if exists
+                                    {
+                                        
+                                        UserDefaults.standard.set(true, forKey: "status")
+                                        UserDefaults.standard.set(user, forKey: "userName")
+                                        NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
+                                        
+                                        
+                                    } else {
+                                        self.creation.toggle()
+                                        self.loading.toggle()
+                                        
+                                    }
+                                }
+                                
+                                
+                                
+                            }
+                            
+                        }) {
+                            Text("Verify OTP")
+                                .frame(width: UIScreen.main.bounds.width - 30, height: 50)
+                        }
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        
+                        
+                        
                     }
-                    .foregroundColor(.white)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
-                    .navigationBarBackButtonHidden(true)
+                    
+                    
                 }
                 
                 
@@ -109,13 +143,26 @@ struct OTPView:View
             
         }
         .padding()
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         .alert(isPresented: $alert) {
             Alert(title: Text("Error"), message: Text(self.errMsg), dismissButton: .destructive(Text("OK")))
+        }
+        .sheet(isPresented: $creation) {
+            SignUpView(show: self.$creation)
         }
         
         
     }
 }
+
+//
+//struct OTPView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignUpView(name:"shi",about:"hi",picker: false,loading:false)
+//    }
+//}
 
 
 
