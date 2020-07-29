@@ -8,8 +8,7 @@
 
 import SwiftUI
 import Firebase
-import FirebaseFirestore
-import FirebaseStorage
+
 struct HomeView: View
 {
     
@@ -36,11 +35,7 @@ struct HomeView: View
                 }
         }
         
-        
     }
-    
-    
-    
     
 }
 
@@ -50,3 +45,4 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
     }
 }
+

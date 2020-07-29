@@ -157,12 +157,25 @@ struct OTPView:View
     }
 }
 
-//
-//struct OTPView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SignUpView(name:"shi",about:"hi",picker: false,loading:false)
-//    }
-//}
+
+struct OTPView_Previews: PreviewProvider {
+
+
+    static var previews: some View {
+       PreviewWrapper()
+    }
+}
+
+struct PreviewWrapper: View {
+    @State(initialValue: false) var show:Bool
+    @State(initialValue: "") var id: String
+
+    var body: some View {
+         OTPView(show: $show, id: $id)
+    }
+  }
+
+
 
 
 

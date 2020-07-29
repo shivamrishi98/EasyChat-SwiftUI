@@ -154,15 +154,19 @@ struct SignUpView: View
 }
 
 
+struct SignUpView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignUPView_PreviewWrapper()
+    }
+}
 
-
-
-
-
-
-
-//struct SignUpView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SignUpView()
-//    }
-//}
+struct SignUPView_PreviewWrapper:View
+{
+    @State(initialValue: false) var show:Bool
+    
+    var body: some View
+    {
+        SignUpView(show: $show)
+    }
+    
+}
