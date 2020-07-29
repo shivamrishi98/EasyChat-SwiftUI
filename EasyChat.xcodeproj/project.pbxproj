@@ -3,19 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E5E9293FF29EAA3AFDA6DCC /* Pods_EasyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06927AEC49701FE2C8E44F31 /* Pods_EasyChat.framework */; };
 		963E563B24D181C100E371AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963E563A24D181C100E371AF /* AppDelegate.swift */; };
 		963E563D24D181C100E371AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963E563C24D181C100E371AF /* SceneDelegate.swift */; };
 		963E563F24D181C100E371AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963E563E24D181C100E371AF /* ContentView.swift */; };
 		963E564124D181C500E371AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963E564024D181C500E371AF /* Assets.xcassets */; };
 		963E564424D181C500E371AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 963E564324D181C500E371AF /* Preview Assets.xcassets */; };
 		963E564724D181C500E371AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963E564524D181C500E371AF /* LaunchScreen.storyboard */; };
+		963E564F24D181F200E371AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 963E564E24D181F200E371AF /* GoogleService-Info.plist */; };
+		96FCAF9C24D1995F00E4B058 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FCAF9B24D1995F00E4B058 /* LoginView.swift */; };
+		96FCAF9E24D1996B00E4B058 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FCAF9D24D1996B00E4B058 /* OTPView.swift */; };
+		96FCAFA024D1997C00E4B058 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FCAF9F24D1997C00E4B058 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06927AEC49701FE2C8E44F31 /* Pods_EasyChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D3C721AF615DD058CC0E207 /* Pods-EasyChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyChat.debug.xcconfig"; path = "Target Support Files/Pods-EasyChat/Pods-EasyChat.debug.xcconfig"; sourceTree = "<group>"; };
+		8FD8958B48E0562EFF7FD83D /* Pods-EasyChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyChat.release.xcconfig"; path = "Target Support Files/Pods-EasyChat/Pods-EasyChat.release.xcconfig"; sourceTree = "<group>"; };
 		963E563724D181C100E371AF /* EasyChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		963E563A24D181C100E371AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		963E563C24D181C100E371AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +32,10 @@
 		963E564324D181C500E371AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		963E564624D181C500E371AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		963E564824D181C500E371AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		963E564E24D181F200E371AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		96FCAF9B24D1995F00E4B058 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		96FCAF9D24D1996B00E4B058 /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
+		96FCAF9F24D1997C00E4B058 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E5E9293FF29EAA3AFDA6DCC /* Pods_EasyChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54CDBA1EAE9E619E546C98AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06927AEC49701FE2C8E44F31 /* Pods_EasyChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		963E562E24D181C100E371AF = {
 			isa = PBXGroup;
 			children = (
 				963E563924D181C100E371AF /* EasyChat */,
 				963E563824D181C100E371AF /* Products */,
+				E954CD7338D2A82921C823C0 /* Pods */,
+				54CDBA1EAE9E619E546C98AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +79,14 @@
 		963E563924D181C100E371AF /* EasyChat */ = {
 			isa = PBXGroup;
 			children = (
+				96FCAF9A24D1994E00E4B058 /* Views */,
 				963E563A24D181C100E371AF /* AppDelegate.swift */,
 				963E563C24D181C100E371AF /* SceneDelegate.swift */,
 				963E563E24D181C100E371AF /* ContentView.swift */,
 				963E564024D181C500E371AF /* Assets.xcassets */,
 				963E564524D181C500E371AF /* LaunchScreen.storyboard */,
 				963E564824D181C500E371AF /* Info.plist */,
+				963E564E24D181F200E371AF /* GoogleService-Info.plist */,
 				963E564224D181C500E371AF /* Preview Content */,
 			);
 			path = EasyChat;
@@ -75,6 +100,25 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		96FCAF9A24D1994E00E4B058 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96FCAF9B24D1995F00E4B058 /* LoginView.swift */,
+				96FCAF9D24D1996B00E4B058 /* OTPView.swift */,
+				96FCAF9F24D1997C00E4B058 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E954CD7338D2A82921C823C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D3C721AF615DD058CC0E207 /* Pods-EasyChat.debug.xcconfig */,
+				8FD8958B48E0562EFF7FD83D /* Pods-EasyChat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 963E564B24D181C500E371AF /* Build configuration list for PBXNativeTarget "EasyChat" */;
 			buildPhases = (
+				7E0642DEECD43308348B08F6 /* [CP] Check Pods Manifest.lock */,
 				963E563324D181C100E371AF /* Sources */,
 				963E563424D181C100E371AF /* Frameworks */,
 				963E563524D181C100E371AF /* Resources */,
+				3C39A5246F53725CC6EB35BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,6 +179,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				963E564F24D181F200E371AF /* GoogleService-Info.plist in Resources */,
 				963E564724D181C500E371AF /* LaunchScreen.storyboard in Resources */,
 				963E564424D181C500E371AF /* Preview Assets.xcassets in Resources */,
 				963E564124D181C500E371AF /* Assets.xcassets in Resources */,
@@ -141,13 +188,58 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3C39A5246F53725CC6EB35BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyChat/Pods-EasyChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EasyChat/Pods-EasyChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EasyChat/Pods-EasyChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E0642DEECD43308348B08F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EasyChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		963E563324D181C100E371AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				963E563B24D181C100E371AF /* AppDelegate.swift in Sources */,
+				96FCAF9E24D1996B00E4B058 /* OTPView.swift in Sources */,
 				963E563D24D181C100E371AF /* SceneDelegate.swift in Sources */,
+				96FCAFA024D1997C00E4B058 /* HomeView.swift in Sources */,
+				96FCAF9C24D1995F00E4B058 /* LoginView.swift in Sources */,
 				963E563F24D181C100E371AF /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +374,7 @@
 		};
 		963E564C24D181C500E371AF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D3C721AF615DD058CC0E207 /* Pods-EasyChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -289,6 +382,7 @@
 				DEVELOPMENT_TEAM = NBL2DFM5E9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = EasyChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,6 +396,7 @@
 		};
 		963E564D24D181C500E371AF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FD8958B48E0562EFF7FD83D /* Pods-EasyChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -309,6 +404,7 @@
 				DEVELOPMENT_TEAM = NBL2DFM5E9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = EasyChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

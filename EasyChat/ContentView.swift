@@ -7,10 +7,36 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
+    
+    @State private var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+    
     var body: some View {
-        Text("Hello, World!")
+        
+        VStack
+            {
+                
+                if status
+                {
+                    HomeView()
+                } else {
+                    
+                    NavigationView
+                        {
+                            LoginView()
+                    }
+                }
+        }.onAppear {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("statusChange"), object: nil, queue: .main) { (_) in
+                
+                let status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
+                
+                self.status = status
+                
+            }
+        }
     }
 }
 
@@ -19,3 +45,8 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
+
+
+
