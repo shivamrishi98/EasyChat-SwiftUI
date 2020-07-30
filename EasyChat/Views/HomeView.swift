@@ -14,112 +14,106 @@ struct HomeView: View
 {
     @State private var username = UserDefaults.standard.value(forKey: "userName") as! String
     @EnvironmentObject var data:MainObservable
+    @State var show = false
+    @State var chat = false
+    @State var uid = ""
+    @State var name = ""
+    @State var profilePicUrl = ""
+    
     var body: some View
     {
-        VStack
-            {
-                
-                if self.data.recents.count == 0
-                {
-                    Indicator()
-                } else {
-                    ScrollView(.vertical, showsIndicators: false)
-                    {
-                        VStack
-                            {
-                                
-                                ForEach(data.recents)
-                                { i in
-                                    RecentCellView(name: i.name, url: i.profilePicUrl, date: i.date, time: i.time, lastMsg: i.lastMsg)
-                                }
-                                
-                        }.padding()
-                        
-                    }
-                }
-                
-        }.navigationBarTitle("Home",displayMode: .inline)
-            .navigationBarItems(leading:
-                Button(action: {
-                    
-                }) {
-                    Text("SignOut")
-                }
-                
-                , trailing:
-                
-                Button(action: {
-                    
-                }) {
-                    Image(systemName: "square.and.pencil")
-                        .resizable()
-                        .frame(width: 25, height: 25)
-                }
-                
-                
-                
-        )
         
-    }
-    
-}
-
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        
-      HomeView()
-    }
-}
-
-struct RecentCellView: View
-{
-    
-    var name:String
-    var url:String
-    var date:String
-    var time:String
-    var lastMsg:String
-    
-    
-    
-    var body:some View
-    {
-        HStack
+        ZStack
             {
-                AnimatedImage(url: URL(string: url)!)
-                    .renderingMode(.original)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 55, height: 55)
-                    .clipShape(Circle())
+                NavigationLink(destination: ChatView(uid: self.uid, name: self.name, profilePicUrl: self.profilePicUrl, chat: self.$chat), isActive: self.$chat) {
+                    Text("")
+                }
                 
                 VStack
                     {
                         
-                        HStack
+                        if self.data.recents.count == 0
+                        {
+                            Indicator()
+                        } else {
+                            ScrollView(.vertical, showsIndicators: false)
                             {
-                                VStack(alignment: .leading, spacing: 6)
-                                {
-                                    Text(name)
-                                    Text(lastMsg).foregroundColor(.gray)
-                                }
+                                VStack
+                                    {
+                                        
+                                        ForEach(data.recents)
+                                        { i in
+                                            
+                                            Button(action: {
+                                                
+                                                self.uid = i.id
+                                                self.name = i.name
+                                                self.profilePicUrl = i.profilePicUrl
+                                                
+                                                self.chat.toggle()
+                                            })
+                                            {
+                                                RecentCellView(name: i.name, url: i.profilePicUrl, date: i.date, time: i.time, lastMsg: i.lastMsg)
+                                            }
+                                            
+                                            
+                                            
+                                        }
+                                        
+                                }.padding()
                                 
-                                Spacer()
-                                
-                                VStack(alignment: .leading, spacing: 6)
-                                {
-                                    Text(date).foregroundColor(.gray)
-                                    Text(time).foregroundColor(.gray)
-                                }
+                            }
                         }
-                        Divider()
                         
-                }
-                
+                }.navigationBarTitle("Home",displayMode: .inline)
+                    .navigationBarItems(leading:
+                        Button(action: {
+                            
+                            try! Auth.auth().signOut()
+                            
+                            UserDefaults.standard.set(false, forKey: "status")
+                            
+                             NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
+                            
+                            
+                        }) {
+                            Text("SignOut")
+                        }
+                        
+                        , trailing:
+                        
+                        Button(action: {
+                            self.show.toggle()
+                        }) {
+                            Image(systemName: "square.and.pencil")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                        }
+                        
+                        
+                        
+                )
                 
         }
+            
+        .sheet(isPresented: self.$show) {
+            SelectChatView(uid: self.$uid, name: self.$name, profilePicUrl: self.$profilePicUrl, show: self.$show, chat: self.$chat)
+        }
+        
     }
     
 }
+
+
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//
+////        SelectChatView()
+//    }
+//}
+
+
+
+
+
 
