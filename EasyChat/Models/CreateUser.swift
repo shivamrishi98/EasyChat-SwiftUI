@@ -47,6 +47,10 @@ func createUser(name: String, about:String,imageData: Data, completion: @escapin
                 
                 UserDefaults.standard.set(name, forKey: "userName")
                 
+                UserDefaults.standard.set(uid, forKey: "uid")
+                
+                UserDefaults.standard.set(url!, forKey: "profilePicUrl")
+                
                 NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
                 
             }

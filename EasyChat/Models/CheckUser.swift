@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseStorage
 
 
-public func checkUser(completion: @escaping (Bool,String) -> Void)
+public func checkUser(completion: @escaping (Bool,String,String,String) -> Void)
 {
     let db  = Firestore.firestore()
     
@@ -28,13 +28,13 @@ public func checkUser(completion: @escaping (Bool,String) -> Void)
             
             if i.documentID == Auth.auth().currentUser?.uid
             {
-                completion(true,i.get("name") as! String)
+                completion(true,i.get("name") as! String,i.documentID,i.get("profilePicUrl") as! String)
             }
             
             
         }
         
-        completion(false,"")
+        completion(false,"","","")
         
         
         

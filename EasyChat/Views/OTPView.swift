@@ -94,12 +94,16 @@ struct OTPView:View
                                 
                                 
                                 
-                                checkUser { (exists, user) in
+                                checkUser { (exists,user,uid,profilePicUrl) in
                                     if exists
                                     {
                                         
                                         UserDefaults.standard.set(true, forKey: "status")
                                         UserDefaults.standard.set(user, forKey: "userName")
+                                        
+                                         UserDefaults.standard.set(uid, forKey: "uid")
+                                         UserDefaults.standard.set(profilePicUrl, forKey: "profilePicUrl")
+                                        
                                         NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
                                         
                                         
