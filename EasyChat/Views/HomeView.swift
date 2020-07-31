@@ -34,8 +34,19 @@ struct HomeView: View
                         
                         if self.data.recents.count == 0
                         {
+                            
+                            if self.data.noRecents
+                            {
+                             
+                                Text("Start A Conversation With Someone")
+                                    .foregroundColor(.black)
+                                    .opacity(0.5)
+                                
+                            } else {
+                            
                             Indicator()
-                        } else {
+                            }
+                            } else {
                             ScrollView(.vertical, showsIndicators: false)
                             {
                                 VStack

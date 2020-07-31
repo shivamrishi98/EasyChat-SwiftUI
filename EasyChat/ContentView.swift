@@ -53,7 +53,7 @@ struct ContentView_Previews: PreviewProvider {
 class MainObservable: ObservableObject
 {
     @Published var recents = [Recent]()
-    
+    @Published var noRecents = false
     init() {
         
         
@@ -65,8 +65,15 @@ class MainObservable: ObservableObject
             if error != nil
             {
                 print(error!.localizedDescription)
+                self.noRecents = true
                 return
             }
+            
+            if snap!.isEmpty
+            {
+                self.noRecents = true
+            }
+            
             
             for i in snap!.documentChanges
             {
