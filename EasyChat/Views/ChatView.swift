@@ -34,11 +34,11 @@ struct ChatView: View
                             .foregroundColor(.black).opacity(0.5).padding()
                         Spacer()
                     } else {
-                    
-                    
-                    Spacer()
-                    Indicator()
-                    Spacer()
+                        
+                        
+                        Spacer()
+                        Indicator()
+                        Spacer()
                     }
                 } else {
                     ScrollView(.vertical, showsIndicators: false)
@@ -52,26 +52,30 @@ struct ChatView: View
                                     HStack
                                         {
                                             
-                                            if i.id == UserDefaults.standard.value(forKey: "uid") as! String
+                                            if i.user == UserDefaults.standard.value(forKey: "uid") as! String
                                             {
+                                              
                                                 Spacer()
                                                 Text(i.msg)
                                                     .padding()
+                                                    .background(Color.blue)
                                                     .clipShape(ChatBubble(msg: true))
                                                     .foregroundColor(.white)
-                                                    .background(Color.blue)
+                                                
                                                 
                                             } else {
                                                 Text(i.msg)
                                                     .padding()
+                                                    .background(Color.green)
                                                     .clipShape(ChatBubble(msg: false))
                                                     .foregroundColor(.white)
-                                                    .background(Color.green)
+                                                
+                                                
                                                 Spacer()
                                             }
                                             
                                             
-                                    }
+                                    }.padding(.top,5)
                                     
                                     
                                     
@@ -86,6 +90,10 @@ struct ChatView: View
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                         Button(action: {
+                            
+                            sendMsg(uid: self.uid, pic: self.profilePicUrl, name: self.name, msg: self.txt, date: Date())
+                            
+                            self.txt = ""
                             
                         })
                         {
@@ -106,73 +114,51 @@ struct ChatView: View
                     }
                 )
         }.padding()
+            .onAppear {
+                self.getMsgs()
+                print(UserDefaults.standard.value(forKey: "uid") as! String)
+                
+        }
     }
     
-    func getMsgs()
-    {
+func getMsgs()
+{
+    
+    let db = Firestore.firestore()
+    
+    let uid = Auth.auth().currentUser?.uid
+    
+    db.collection("msgs").document(uid!).collection(self.uid).order(by: "date", descending: false).addSnapshotListener { (snap, error) in
+        if error != nil
+        {
+            print(error!.localizedDescription)
+            self.noMsg = true
+            return
+        }
         
-        let db = Firestore.firestore()
-        
-        let uid = Auth.auth().currentUser?.uid
-        
-        db.collection("msgs").document(uid!).collection(uid!).order(by: "date", descending: false).getDocuments { (snap, error) in
-            
-            if error != nil
-            {
-                print(error!.localizedDescription)
-                self.noMsg = true
-                return
-            }
-            
-            if snap!.isEmpty
-            {
-                self.noMsg = true
-                
-            }
-            
-            for i in snap!.documents
-            {
-                let id = i.documentID
-                let msg = i.get("msg") as! String
-                let user = i.get("user") as! String
-                
-                self.msgs.append(Msg(id: id, msg: msg, user: user))
-                
-            }
-            
+        if snap!.isEmpty
+        {
+            self.noMsg = true
             
         }
         
-        
+        for i in snap!.documentChanges
+        {
+            
+            if i.type == .added
+            {
+                let id = i.document.documentID
+                let msg = i.document.get("msg") as! String
+                let user = i.document.get("userUID") as! String
+                
+                self.msgs.append(Msg(id: id, msg: msg, user: user))
+            }
+            
+            
+            
+        }
     }
     
     
 }
-
-
-
-struct Msg:Identifiable
-{
-    var id:String
-    var msg:String
-    var user:String
-}
-
-//struct ChatView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChatView()
-//    }
-//}
-
-struct ChatBubble: Shape
-{
-    var msg:Bool
-    
-    func path(in rect: CGRect) -> Path {
-        
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft,.topRight, msg ? .bottomLeft: .bottomRight], cornerRadii: CGSize(width: 16, height: 16))
-        
-        return Path(path.cgPath)
-    }
-    
 }

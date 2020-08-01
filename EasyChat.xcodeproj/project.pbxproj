@@ -25,6 +25,7 @@
 		9670430224D1DE0600CA9820 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670430124D1DE0600CA9820 /* Indicator.swift */; };
 		9670430424D1DE2D00CA9820 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670430324D1DE2D00CA9820 /* SignUpView.swift */; };
 		9670430624D1DE8400CA9820 /* CreateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9670430524D1DE8400CA9820 /* CreateUser.swift */; };
+		9675506724D5D9F900DF41E2 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9675506624D5D9F900DF41E2 /* Messages.swift */; };
 		96FCAF9C24D1995F00E4B058 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FCAF9B24D1995F00E4B058 /* LoginView.swift */; };
 		96FCAF9E24D1996B00E4B058 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FCAF9D24D1996B00E4B058 /* OTPView.swift */; };
 		96FCAFA024D1997C00E4B058 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FCAF9F24D1997C00E4B058 /* HomeView.swift */; };
@@ -53,6 +54,7 @@
 		9670430124D1DE0600CA9820 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		9670430324D1DE2D00CA9820 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		9670430524D1DE8400CA9820 /* CreateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUser.swift; sourceTree = "<group>"; };
+		9675506624D5D9F900DF41E2 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		96FCAF9B24D1995F00E4B058 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		96FCAF9D24D1996B00E4B058 /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
 		96FCAF9F24D1997C00E4B058 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				9670430524D1DE8400CA9820 /* CreateUser.swift */,
 				967042FC24D1C15000CA9820 /* CheckUser.swift */,
 				9650758B24D310ED003D4954 /* GetAllUsers.swift */,
+				9675506624D5D9F900DF41E2 /* Messages.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				9670430224D1DE0600CA9820 /* Indicator.swift in Sources */,
 				963E563F24D181C100E371AF /* ContentView.swift in Sources */,
 				9670430624D1DE8400CA9820 /* CreateUser.swift in Sources */,
+				9675506724D5D9F900DF41E2 /* Messages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

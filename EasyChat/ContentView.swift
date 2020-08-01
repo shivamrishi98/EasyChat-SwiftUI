@@ -77,22 +77,62 @@ class MainObservable: ObservableObject
             
             for i in snap!.documentChanges
             {
-                let id = i.document.documentID
-                let name = i.document.get("name") as! String
-                let profilePicUrl = i.document.get("profilePicUrl") as! String
-                let lastMsg = i.document.get("lastMsg") as! String
-                let timeStamp = i.document.get("date") as! Timestamp
+                
+                if i.type == .added
+                {
+                    let id = i.document.documentID
+                    let name = i.document.get("name") as! String
+                    let profilePicUrl = i.document.get("profilePicUrl") as! String
+                    let lastMsg = i.document.get("lastMsg") as! String
+                    let timeStamp = i.document.get("date") as! Timestamp
+                    
+                    
+                    let formattter = DateFormatter()
+                    formattter.dateFormat = "dd/MM/yyyy"
+                    let date = formattter.string(from: timeStamp.dateValue())
+                    
+                    formattter.dateFormat = "hh:mm a"
+                    
+                    let time = formattter.string(from: timeStamp.dateValue())
+                    
+                    self.recents.append(Recent(id: id, name: name, profilePicUrl: profilePicUrl, lastMsg: lastMsg, time: time, date: date, stamp: timeStamp.dateValue()))
+                }
+                
+                if i.type == .modified
+                {
+                    
+                    let id = i.document.documentID
+               
+                    let lastMsg = i.document.get("lastMsg") as! String
+                    let timeStamp = i.document.get("date") as! Timestamp
+                    
+                    
+                    let formattter = DateFormatter()
+                    formattter.dateFormat = "dd/MM/yyyy"
+                    let date = formattter.string(from: timeStamp.dateValue())
+                    
+                    formattter.dateFormat = "hh:mm a"
+                    
+                    let time = formattter.string(from: timeStamp.dateValue())
+                    
+                    for j in 0..<self.recents.count
+                    {
+                        if self.recents[j].id == id
+                        {
+                            self.recents[j].lastMsg = lastMsg
+                             self.recents[j].time = time
+                            self.recents[j].date = date
+                            self.recents[j].stamp = timeStamp.dateValue()
+                        }
+                        
+                        
+                    }
+                    
+                    
+                }
                 
                 
-                let formattter = DateFormatter()
-                formattter.dateFormat = "dd/MM/yyyy"
-                let date = formattter.string(from: timeStamp.dateValue())
                 
-                formattter.dateFormat = "hh:mm a"
-                
-                let time = formattter.string(from: timeStamp.dateValue())
-                
-                self.recents.append(Recent(id: id, name: name, profilePicUrl: profilePicUrl, lastMsg: lastMsg, time: time, date: date, stamp: timeStamp.dateValue()))
                 
                 
                 

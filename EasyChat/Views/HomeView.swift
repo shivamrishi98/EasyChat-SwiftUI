@@ -37,22 +37,22 @@ struct HomeView: View
                             
                             if self.data.noRecents
                             {
-                             
+                                
                                 Text("Start A Conversation With Someone")
                                     .foregroundColor(.black)
                                     .opacity(0.5)
                                 
                             } else {
-                            
-                            Indicator()
+                                
+                                Indicator()
                             }
-                            } else {
+                        } else {
                             ScrollView(.vertical, showsIndicators: false)
                             {
                                 VStack
                                     {
                                         
-                                        ForEach(data.recents)
+                                        ForEach(data.recents.sorted(by: {$0.stamp > $1.stamp}))
                                         { i in
                                             
                                             Button(action: {
@@ -82,9 +82,12 @@ struct HomeView: View
                             
                             try! Auth.auth().signOut()
                             
+                            UserDefaults.standard.set("", forKey: "userName")
+                            UserDefaults.standard.set("", forKey: "profilePicUrl")
+                            UserDefaults.standard.set("", forKey: "uid")
                             UserDefaults.standard.set(false, forKey: "status")
                             
-                             NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
+                            NotificationCenter.default.post(name: NSNotification.Name("statusChange"), object: nil)
                             
                             
                         }) {

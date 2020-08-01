@@ -32,8 +32,10 @@ class getUsers:ObservableObject
                 let about = i.get("about") as! String
                 let profilePicUrl = i.get("profilePicUrl") as! String
                 
-                
-                self.users.append(User(id: id, name: name, about: about, profilePicUrl: profilePicUrl))
+                if id != UserDefaults.standard.value(forKey: "uid") as! String
+                {
+                    self.users.append(User(id: id, name: name, about: about, profilePicUrl: profilePicUrl))
+                }
             }
         }
         
